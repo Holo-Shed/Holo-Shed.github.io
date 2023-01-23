@@ -1,0 +1,14 @@
+# note: this is just the suggested docs-build environment
+name: holoshed-docs
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.11
+  - pip>=22
+  - pre-commit
+  - mkdocs
+  - mkdocs-literate-nav
+  - pip:
+    - mkdocs-cinder
+    - mkdocs-section-index
+

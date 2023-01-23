@@ -1,0 +1,17 @@
+site_name: HoloShed
+site_url: https://github.com/Holo-Shed
+site_favicon: static/favicon.ico
+theme:
+  name: cinder
+site_author: Gili "OpenBagTwo" Barlev
+site_description: The unshackled Steam Deck OS--because the only person shooting you in the foot should be you.
+repo_url: https://github.com/Holo-Shed/Holo-Shed.github.io
+copyright: All code and content on this site is licensed under the <a href=https://github.com/Holo-Shed/Holo-Shed.github.io/blob/dev/LICENSE>GNU Public License v3</a> unless otherwise stated.
+nav:
+  - Home: index.md
+plugins:
+  - search
+  - section-index
+  - literate-nav:
+      nav_file: SUMMARY.md
+
