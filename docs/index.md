@@ -69,3 +69,21 @@ Even if I get everything working, a system with:
 is designed to appeal to exactly one person:
 
 me.
+
+## What's with the name?
+
+SteamOS is referred to by Valve as "HoloOS." Holo OS on the Steam Deck. 🤔 Holo Deck.
+
+Lest you ever doubt that the folks working for Gabe Newell are complete and total dorks
+(and I love them for it ♥️).
+
+In any case, if I'm going to make an off-brand version of a HoloDeck there's no need to reinvent
+the wheel when it comes to naming.
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/3sxfITysf70" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+Or, to save you the click:
+
+> **Kif**: This is the holoshed. It can simulate anything you desire, and nothing can hurt you. Except when it malfunctions and the holograms become real. 
+>
+> **Amy**: Well, that probably won't happen this time.
