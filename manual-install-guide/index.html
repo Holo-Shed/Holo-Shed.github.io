@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The unshackled Steam Deck OS--because the only person shooting you in the foot should be you.">
+    <meta name="author" content="Gili "OpenBagTwo" Barlev">
+    <link rel="canonical" href="https://github.com/Holo-Shed/manual-install-guide/">
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    
+    <title>Manual Installation - HoloShed</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../css/base.min.css" rel="stylesheet">
+    <link href="../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="..">HoloShed</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/Holo-Shed/Holo-Shed.github.io/edit/master/docs/manual-install-guide.md"><i class="fab fa-github"></i> Edit on GitHub</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#manual-installation">Manual Installation</a></li>
+            <li class="second-level"><a href="#create-your-vm">Create your VM</a></li>
+                
+            <li class="second-level"><a href="#partition-your-disk">Partition your Disk</a></li>
+                
+            <li class="second-level"><a href="#install-arch">Install Arch</a></li>
+                
+            <li class="second-level"><a href="#findings">Findings</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="manual-installation">Manual Installation</h1>
+<p>In a VM, at least</p>
+<h2 id="create-your-vm">Create your VM</h2>
+<p>I'm using KVM / QEMU / VirtManager, but you do you.</p>
+<ol>
+<li>Set up your virtual machine with Steam Deck specs:</li>
+<li>64GB of disk space</li>
+<li>16GB of RAM</li>
+<li>8 CPUs (4 cores, 2 threads per core)</li>
+<li>For initial setup, I'm using a Virtio display and Spice server. You
+   could also do GPU pass-through.</li>
+<li>Make sure you're using UEFI for boot, not BIOS</li>
+</ol>
+<h2 id="partition-your-disk">Partition your Disk</h2>
+<p>You can do this as part of the Arch install, but I'm a lot more comfy
+doing it graphically with GParted</p>
+<ol>
+<li>Download the SystemRescue ISO</li>
+<li>Load it into the VM  as a virtual CD</li>
+<li>Set it to the top of the boot order</li>
+<li>Power on and boot</li>
+<li>Open GParted and use the following partitioning layout:
+   | Label  | File System | Size  |
+   | -------| ----------- | ----- |
+   | boot   | FAT32       | 512MB |
+   | swap   | linux-swap  | 16GB  |
+   | root   | ext4        | 16GB  |
+   | home   | ext4        | 8GB   |
+   | main   | ext4        | (remainder) |</li>
+<li>Apply, close and power off</li>
+</ol>
+<h2 id="install-arch">Install Arch</h2>
+<ol>
+<li>Download the Arch installation ISO</li>
+<li>Load it into the VM as a virtual CD</li>
+<li>Make sure it's still the top of the boot order</li>
+<li>Power on and boot</li>
+<li>Follow the Arch install guide</li>
+<li>If you followed the above section, you can skip partitioning &amp; formatting</li>
+<li>Mount the partitions. If you followed the layout of the above section,
+     then it should be self-explanatory what to mount where. The <code>main</code> partition
+     should be <code>/main</code></li>
+<li>Install the packages listed in <code>pacstrap.conf</code></li>
+<li>Don't reboot when done</li>
+<li><code>arch-chroot</code> into your system</li>
+<li>useradd your account, adding yourself to wheel</li>
+<li>visudo to add wheel group to sudoers</li>
+<li>su into yourself, disable root login</li>
+<li><code>chown -R</code> <code>/main</code> so that you own it.</li>
+<li>Set up your home folders to symlink to folders in <code>/main</code></li>
+<li><code>cd</code> to <code>~/Workspace</code> (<code>/main/Workspace</code>) and install <code>paru</code></li>
+<li>Install additional packages through paru (including greetd)</li>
+<li>Configure greetd</li>
+<li>Logout, exit chroot, reboot</li>
+</ol>
+<h2 id="findings">Findings</h2>
+<p>This experience was pretty horrible--Sway suffers due to a known
+kernel limitation that prevents the cursor from working correctly
+in a guest OS. Vulkan did not work through Spice (which, tbf, says
+acceleration is through OpenGL), and everything was just a buggy mess.</p>
+<p>And I haven't even started exploring virtual keyboards and X-input mapping.</p></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>All code and content on this site is licensed under the <a href=https://github.com/Holo-Shed/Holo-Shed.github.io/blob/dev/LICENSE>GNU Public License v3</a> unless otherwise stated.</small><br>
+            
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = ".."</script>
+    
+    <script src="../js/base.js"></script>
+    <script src="../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>

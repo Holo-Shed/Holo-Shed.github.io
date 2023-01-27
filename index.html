@@ -86,12 +86,88 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="first-level active"><a href="#holoshed">HoloShed</a></li>
+            <li class="second-level"><a href="#what-is-holoshed">What is HoloShed?</a></li>
+                
+            <li class="second-level"><a href="#whats-wrong-with-steamos">What's wrong with SteamOS?</a></li>
+                
+            <li class="second-level"><a href="#whats-different-about-holoshed">What's different about HoloShed?</a></li>
+                
+            <li class="second-level"><a href="#is-holoshed-for-me">Is HoloShed for Me?</a></li>
+                
+            <li class="second-level"><a href="#seriously">Seriously?</a></li>
+                
+            <li class="second-level"><a href="#whats-with-the-name">What's with the name?</a></li>
+                
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
 <h1 id="holoshed">HoloShed</h1>
-<p>The unshackled Steam Deck OS--because the only person shooting you in the foot should be you.</p></div>
+<p><strong><em>The unshackled Steam Deck OS--because the only person shooting you in the foot should be you.</em></strong></p>
+<h2 id="what-is-holoshed">What is HoloShed?</h2>
+<p>HoloShed is a project to create my own personal Linux distribution for the
+<a href="https://store.steampowered.com/steamdeck">Valve Steam Deck</a>, an absolutely incredible handheld
+device responsible for bringing Linux to the masses.</p>
+<p>I'm told it plays games.</p>
+<h2 id="whats-wrong-with-steamos">What's wrong with SteamOS?</h2>
+<p>To their credit, Valve did what many thought unthinkable--they built a GNU/Linux
+(meaning only to differentiate against Android, not to pander to Richard Stallman)
+distribution where someone who knows nothing about computers can have it <em>just work</em>--and for
+more than checking emails or training recurrent neural networks--90% of the time for 90%
+of things. And amazingly, they did it while <em>still</em> providing us tinkerers and hackers with
+total and complete control over the software.</p>
+<p>The problem ("problem") is that Valve achieved this by locking away all the foot-guns inside
+an immutable filesystem. Sure, they gave us the keys to the locker, but if you go around futzing
+around and customizing your packages, unless you're doing it all in userspace (God bless flatpak)
+or using an overlay tool like <a href="https://github.com/ValShaped/rwfus">Rwfus</a>, you're looking at
+building your sandcastle from scratch the next time the update tide rolls in.</p>
+<p>The other problem with this immutable filesystem approach is that the SteamOS upgrade experience
+feels very much more like macOS than a Linux--you don't get to pick and choose which components
+get updated, it's all or nothing. And when that all is something like the nightmare that was
+<a href="https://www.google.com/search?q=steamos+3.4+update+broke">SteamOS 3.4</a>, it kinda gets you asking
+why you're letting <em>someone else</em> shoot you in the foot instead of doing it for yourself.</p>
+<h2 id="whats-different-about-holoshed">What's different about HoloShed?</h2>
+<p>In short, when it's done, it's going to be <em>mine</em>.</p>
+<p>Several things about SteamOS (beyond the OS philosophy) really irk me on a personal level.
+Namely:</p>
+<ul>
+<li>I am, and always have been, a GNOME. My philosophy regarding KDE is very much, "if I'd wanted
+  to use Windows XP, I would have stuck with Windows XP."</li>
+<li>Separating Gaming Mode and Desktop mode is dumb, especially now that Deck's UI changes have arrived
+  in Steam desktop's "Big Picture" client</li>
+<li>Unless there is a <em>compelling</em> reason not to, I want to be on the latest Linux kernel possible, given
+  the incredible changes and bugfixes that are getting added on what seem like a daily basis.</li>
+<li>This one pains me to say, but I don't think Wayland is ready yet. Sway is awesome, gamescope is
+  super neat, but I just don't see the advantage compared with the hassle of finding things that
+  work (especially outside of XWayland).</li>
+</ul>
+<h2 id="is-holoshed-for-me">Is HoloShed for Me?</h2>
+<p>No.</p>
+<h2 id="seriously">Seriously?</h2>
+<p>Yeah, this project is a creative outlet for me and a chance for me to learn more about how Linux
+distributions work. There is an approximately 0% chance that I end up with a system with even half
+the functionality as SteamOS or a third the utility of SteamOS + Rwfus.</p>
+<p>There might be value in looking at my process, but even there I'm guessing the nature of that value will
+be less educational than entertainment at the many ways I mess things up.</p>
+<p>Even if I get everything working, a system with:
+- my particular choice of desktop environment (probably <a href="https://elementary.io/">Pantheon</a>)
+- my particular configurations and customizations (<code>alias cat='lolcat'</code>)
+- my particular bundled applications and development stacks</p>
+<p>is designed to appeal to exactly one person:</p>
+<p>me.</p>
+<h2 id="whats-with-the-name">What's with the name?</h2>
+<p>SteamOS is referred to by Valve as "HoloOS." Holo OS on the Steam Deck. 🤔 Holo Deck.</p>
+<p>Lest you ever doubt that the folks working for Gabe Newell are complete and total dorks
+(and I love them for it ♥️).</p>
+<p>In any case, if I'm going to make an off-brand version of a HoloDeck there's no need to reinvent
+the wheel when it comes to naming.</p>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/3sxfITysf70" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<p>Or, to save you the click:</p>
+<blockquote>
+<p><strong>Kif</strong>: This is the holoshed. It can simulate anything you desire, and nothing can hurt you. Except when it malfunctions and the holograms become real. </p>
+<p><strong>Amy</strong>: Well, that probably won't happen this time.</p>
+</blockquote></div>
         
         
     </div>
@@ -198,5 +274,5 @@
 
 <!--
 MkDocs version : 1.4.2
-Build Date UTC : 2023-01-23 22:14:15.675012+00:00
+Build Date UTC : 2023-01-27 23:08:14.181533+00:00
 -->
