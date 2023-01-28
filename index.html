@@ -65,11 +65,46 @@
 
         <!-- Expanded navigation -->
         <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="active">
+                        <a href=".">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dev Diary <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="dev-diary/01-to-make-a-linux/">How to Make a Linux Distribution</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
 
             <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
                             <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li class="disabled">
+                        <a rel="prev" >
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="dev-diary/">
+                            Next <i class="fas fa-arrow-right"></i>
                         </a>
                     </li>
                     <li>
@@ -136,7 +171,10 @@ Namely:</p>
 <li>Separating Gaming Mode and Desktop mode is dumb, especially now that Deck's UI changes have arrived
   in Steam desktop's "Big Picture" client</li>
 <li>Unless there is a <em>compelling</em> reason not to, I want to be on the latest Linux kernel possible, given
-  the incredible changes and bugfixes that are getting added on what seem like a daily basis.</li>
+  the incredible changes and bugfixes that are getting added on what seem like a daily basis</li>
+<li>I prefer to keep my data (documents, multimedia files, game saves, etc.) on a separate partition
+  from both my OS <em>and</em> my home directory (and then just make heavy use of symlinks). This is to
+  make it a lot easier to distro-hop, dual boot and recover from desktop configuration snafus.</li>
 <li>This one pains me to say, but I don't think Wayland is ready yet. Sway is awesome, gamescope is
   super neat, but I just don't see the advantage compared with the hassle of finding things that
   work (especially outside of XWayland).</li>
@@ -149,10 +187,12 @@ distributions work. There is an approximately 0% chance that I end up with a sys
 the functionality as SteamOS or a third the utility of SteamOS + Rwfus.</p>
 <p>There might be value in looking at my process, but even there I'm guessing the nature of that value will
 be less educational than entertainment at the many ways I mess things up.</p>
-<p>Even if I get everything working, a system with:
-- my particular choice of desktop environment (probably <a href="https://elementary.io/">Pantheon</a>)
-- my particular configurations and customizations (<code>alias cat='lolcat'</code>)
-- my particular bundled applications and development stacks</p>
+<p>Even if I get everything working, a system with:</p>
+<ul>
+<li>my particular choice of desktop environment (probably <a href="https://elementary.io/">Pantheon</a>)</li>
+<li>my particular configurations and customizations (<code>alias cat='lolcat'</code>)</li>
+<li>my particular bundled applications and development stacks</li>
+</ul>
 <p>is designed to appeal to exactly one person:</p>
 <p>me.</p>
 <h2 id="whats-with-the-name">What's with the name?</h2>
@@ -165,7 +205,7 @@ the wheel when it comes to naming.</p>
 
 <p>Or, to save you the click:</p>
 <blockquote>
-<p><strong>Kif</strong>: This is the holoshed. It can simulate anything you desire, and nothing can hurt you. Except when it malfunctions and the holograms become real. </p>
+<p><strong>Kif</strong>: This is the holoshed. It can simulate anything you desire, and nothing can hurt you. Except when it malfunctions and the holograms become real.</p>
 <p><strong>Amy</strong>: Well, that probably won't happen this time.</p>
 </blockquote></div>
         
@@ -274,5 +314,5 @@ the wheel when it comes to naming.</p>
 
 <!--
 MkDocs version : 1.4.2
-Build Date UTC : 2023-01-27 23:08:14.181533+00:00
+Build Date UTC : 2023-01-28 18:49:54.328410+00:00
 -->
