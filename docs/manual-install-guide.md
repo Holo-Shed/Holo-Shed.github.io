@@ -7,9 +7,11 @@ In a VM, at least
 I'm using KVM / QEMU / VirtManager, but you do you.
 
 1. Set up your virtual machine with Steam Deck specs:
-  - 64GB of disk space
-  - 16GB of RAM
-  - 8 CPUs (4 cores, 2 threads per core)
+
+- 64GB of disk space
+- 16GB of RAM
+- 8 CPUs (4 cores, 2 threads per core)
+
 1. For initial setup, I'm using a Virtio display and Spice server. You
    could also do GPU pass-through.
 1. Make sure you're using UEFI for boot, not BIOS
@@ -65,4 +67,3 @@ in a guest OS. Vulkan did not work through Spice (which, tbf, says
 acceleration is through OpenGL), and everything was just a buggy mess.
 
 And I haven't even started exploring virtual keyboards and X-input mapping.
-

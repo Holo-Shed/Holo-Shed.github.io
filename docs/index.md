@@ -14,9 +14,9 @@ I'm told it plays games.
 
 To their credit, Valve did what many thought unthinkable--they built a GNU/Linux
 (meaning only to differentiate against Android, not to pander to Richard Stallman)
-distribution where someone who knows nothing about computers can have it _just work_--and for
+distribution where someone who knows nothing about computers can have it *just work*--and for
 more than checking emails or training recurrent neural networks--90% of the time for 90%
-of things. And amazingly, they did it while _still_ providing us tinkerers and hackers with
+of things. And amazingly, they did it while *still* providing us tinkerers and hackers with
 total and complete control over the software.
 
 The problem ("problem") is that Valve achieved this by locking away all the foot-guns inside
@@ -29,11 +29,11 @@ The other problem with this immutable filesystem approach is that the SteamOS up
 feels very much more like macOS than a Linux--you don't get to pick and choose which components
 get updated, it's all or nothing. And when that all is something like the nightmare that was
 [SteamOS 3.4](https://www.google.com/search?q=steamos+3.4+update+broke), it kinda gets you asking
-why you're letting _someone else_ shoot you in the foot instead of doing it for yourself.
+why you're letting *someone else* shoot you in the foot instead of doing it for yourself.
 
 ## What's different about HoloShed?
 
-In short, when it's done, it's going to be _mine_.
+In short, when it's done, it's going to be *mine*.
 
 Several things about SteamOS (beyond the OS philosophy) really irk me on a personal level.
 Namely:
@@ -42,8 +42,11 @@ Namely:
   to use Windows XP, I would have stuck with Windows XP."
 - Separating Gaming Mode and Desktop mode is dumb, especially now that Deck's UI changes have arrived
   in Steam desktop's "Big Picture" client
-- Unless there is a _compelling_ reason not to, I want to be on the latest Linux kernel possible, given
-  the incredible changes and bugfixes that are getting added on what seem like a daily basis.
+- Unless there is a *compelling* reason not to, I want to be on the latest Linux kernel possible, given
+  the incredible changes and bugfixes that are getting added on what seem like a daily basis
+- I prefer to keep my data (documents, multimedia files, game saves, etc.) on a separate partition
+  from both my OS *and* my home directory (and then just make heavy use of symlinks). This is to
+  make it a lot easier to distro-hop, dual boot and recover from desktop configuration snafus.
 - This one pains me to say, but I don't think Wayland is ready yet. Sway is awesome, gamescope is
   super neat, but I just don't see the advantage compared with the hassle of finding things that
   work (especially outside of XWayland).
@@ -62,6 +65,7 @@ There might be value in looking at my process, but even there I'm guessing the n
 be less educational than entertainment at the many ways I mess things up.
 
 Even if I get everything working, a system with:
+
 - my particular choice of desktop environment (probably [Pantheon](https://elementary.io/))
 - my particular configurations and customizations (`alias cat='lolcat'`)
 - my particular bundled applications and development stacks
@@ -84,6 +88,6 @@ the wheel when it comes to naming.
 
 Or, to save you the click:
 
-> **Kif**: This is the holoshed. It can simulate anything you desire, and nothing can hurt you. Except when it malfunctions and the holograms become real. 
+> **Kif**: This is the holoshed. It can simulate anything you desire, and nothing can hurt you. Except when it malfunctions and the holograms become real.
 >
 > **Amy**: Well, that probably won't happen this time.
