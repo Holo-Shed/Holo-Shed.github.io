@@ -125,7 +125,11 @@
                 
             <li class="second-level"><a href="#whats-wrong-with-steamos">What's wrong with SteamOS?</a></li>
                 
-            <li class="second-level"><a href="#whats-different-about-holoshed">What's different about HoloShed?</a></li>
+            <li class="second-level"><a href="#so-why-not-windows">So why not Windows?</a></li>
+                
+            <li class="second-level"><a href="#why-not-chimeraos-or-nobara-or-hannah-montana-linux">Why not ChimeraOS? Or Nobara? Or Hannah Montana Linux?</a></li>
+                
+            <li class="second-level"><a href="#so-whats-going-to-be-different-about-holoshed">So what's going to be different about HoloShed?</a></li>
                 
             <li class="second-level"><a href="#is-holoshed-for-me">Is HoloShed for Me?</a></li>
                 
@@ -141,55 +145,103 @@
 <p><strong><em>The unshackled Steam Deck OS--because the only person shooting you in the foot should be you.</em></strong></p>
 <h2 id="what-is-holoshed">What is HoloShed?</h2>
 <p>HoloShed is a project to create my own personal Linux distribution for the
-<a href="https://store.steampowered.com/steamdeck">Valve Steam Deck</a>, an absolutely incredible handheld
-device responsible for bringing Linux to the masses.</p>
-<p>I'm told it plays games.</p>
+<a href="https://store.steampowered.com/steamdeck">Valve Steam Deck</a>
+and <a href="https://gpd.hk/gpdwin4">similar cyberdecks</a>,
+absolutely incredible handheld devices with the power
+of laptops twice their price in form factors you can stick
+into a coat pocket or use while standing on a crowded train.</p>
+<p>I'm told they play games.</p>
 <h2 id="whats-wrong-with-steamos">What's wrong with SteamOS?</h2>
+<p>The Steam Deck is an <strong>omni-console</strong>—it is first and foremost a device for
+playing games. All games. From DOS and NES retro classics to modern AAA titles,
+from games designed for consoles to PC strategy games. The Steam Deck has the power
+(and the input methods) to play them all.</p>
+<p>All that is due in equal parts to the hardware and the software, by which I mean
+SteamOS, a dedicated gaming OS that is way more than the sum of its open source
+parts.</p>
 <p>To their credit, Valve did what many thought unthinkable--they built a GNU/Linux
-(meaning only to differentiate against Android, not to pander to Richard Stallman)
-distribution where someone who knows nothing about computers can have it <em>just work</em>--and for
-more than checking emails or training recurrent neural networks--90% of the time for 90%
-of things. And amazingly, they did it while <em>still</em> providing us tinkerers and hackers with
+distribution where someone who knows nothing about computers can have it <em>just work</em>.
+And work for more than checking emails or training recurrent neural networks:
+in my experience, 90% of the things I've tried to do with the Deck work for 99%
+of the time. And amazingly, this is <em>still</em> while providing us tinkerers and hackers with
 total and complete control over the software.</p>
-<p>The problem ("problem") is that Valve achieved this by locking away all the foot-guns inside
-an immutable filesystem. Sure, they gave us the keys to the locker, but if you go around futzing
-around and customizing your packages, unless you're doing it all in userspace (God bless flatpak)
-or using an overlay tool like <a href="https://github.com/ValShaped/rwfus">Rwfus</a>, you're looking at
-building your sandcastle from scratch the next time the update tide rolls in.</p>
-<p>The other problem with this immutable filesystem approach is that the SteamOS upgrade experience
-feels very much more like macOS than a Linux--you don't get to pick and choose which components
-get updated, it's all or nothing. And when that all is something like the nightmare that was
-<a href="https://www.google.com/search?q=steamos+3.4+update+broke">SteamOS 3.4</a>, it kinda gets you asking
-why you're letting <em>someone else</em> shoot you in the foot instead of doing it for yourself.</p>
-<h2 id="whats-different-about-holoshed">What's different about HoloShed?</h2>
-<p>In short, when it's done, it's going to be <em>mine</em>.</p>
-<p>Several things about SteamOS (beyond the OS philosophy) really irk me on a personal level.
-Namely:</p>
+<p>The problem ("problem") is that, as flexible and capable as SteamOS is, and even with
+tools like like <a href="https://github.com/ValShaped/rwfus">Rwfus</a> around to help get around
+the immutable file system, SteamOS is a <em>very opinionated</em> language, and for people
+like me who have strong opinions of their own, there are going to be things about
+SteamOS that we find infuriating.</p>
+<p>A short list of my grievances:</p>
 <ul>
-<li>I am, and always have been, a GNOME. My philosophy regarding KDE is very much, "if I'd wanted
-  to use Windows XP, I would have stuck with Windows XP."</li>
-<li>Separating Gaming Mode and Desktop mode is dumb, especially now that Deck's UI changes have arrived
-  in Steam desktop's "Big Picture" client</li>
-<li>Unless there is a <em>compelling</em> reason not to, I want to be on the latest Linux kernel possible, given
-  the incredible changes and bugfixes that are getting added on what seem like a daily basis</li>
-<li>I prefer to keep my data (documents, multimedia files, game saves, etc.) on a separate partition
-  from both my OS <em>and</em> my home directory (and then just make heavy use of symlinks). This is to
-  make it a lot easier to distro-hop, dual boot and recover from desktop configuration snafus.</li>
-<li>This one pains me to say, but I don't think Wayland is ready yet. Sway is awesome, gamescope is
-  super neat, but I just don't see the advantage compared with the hassle of finding things that
-  work (especially outside of XWayland).</li>
+<li>The default kernel is positively ancient. Of course it's a lot of work writing
+  kernel patches for custom hardware, especially given the level to which Valve
+  has optimized performance per Watt to squeeze every minute of battery life out
+  of every game preset, but there are plenty of non-APU changes in the Linux kernel
+  (like NTFS suppport for people who dual boot or Fn-key support for those of us
+  with Keychron keebs) that are frustratingly just sitting in the Beta channel,
+  wgich takes me to the fact that:</li>
+<li>SteamOS upgrades are all-or-nothing. I can't choose to upgrade my kernel while
+  keeping my MESA drivers on the stable branch. Granted, with Rwfus I probably could,
+  and partial upgrades are a big no-no anyway, but darn it! I shouldn't have to
+  jump through hoops to shoot myself in the leg!</li>
+<li>Desktop mode should not be separate from gaming mode. And multitasking should not
+  be something that feels less natural on the Deck than it does on my phone, which
+  at least has picture-in-picture.</li>
+<li>KDE Plasma is pants. If I had liked the look and feel of Windows XP, I wouldn't have
+  wiped it from my laptop in 2006 favor of Ubuntu (Dapper Drake!) </li>
+</ul>
+<h2 id="so-why-not-windows">So why not Windows?</h2>
+<p>Because at this point in my life, I want an operating system that <em>just works</em>.</p>
+<p>No seriously: I cannot understand at this point how people are willing to spend
+hours fighting with Windows Update when it cripples their expensive new processor
+or recover from BSODs when a graphics driver update goes horribly wrong, and yet
+when a tutorial tells them to open a terminal and type a command as transparently
+clear as <code>package-manager install the-thing</code> they <em>nope</em> right out.</p>
+<p>In all seriousness, I get that people are used to what they're used to, but as
+someone who hasn't used Windows regularly since 2006, there is very little that
+could get me to use Redmond's Finest.</p>
+<h2 id="why-not-chimeraos-or-nobara-or-hannah-montana-linux">Why not ChimeraOS? Or Nobara? Or Hannah Montana Linux?</h2>
+<p>All fine choices. But whenever I put on my finest kneesocks and head to a Linux
+emnthusiast shindig, I always feel self-conscious and like less of a nerd knowing
+that I've never rolled my own OS.</p>
+<h2 id="so-whats-going-to-be-different-about-holoshed">So what's going to be different about HoloShed?</h2>
+<p>In short, when it's done, it's going to be <em>mine</em>.</p>
+<p>If nothing else, it'll be something I made to make me happy.</p>
+<p>But I guess specifically:</p>
+<ul>
+<li>It's going to be geared towards handheld cyberdecks with lots of buttons like the Steam
+  Deck and Win4. You'll be able to use it for gaming and poinmt &amp; click applications
+  without pulling up or folding out the keyboard.</li>
+<li>No separation of desktop mode and gaming mode. One version will definitely be X11-based
+  using the Pantheon desktop environment (from <a href="https://elementary.io">elementaryOS</a>).<ul>
+<li>I'd also like to make a version with a tiling window manager like
+  i3, <a href="https://swaywm.org/">sway</a> or <a href="https://hyprland.org/">hyprland</a>, depending on
+  which works best for gaming.</li>
+</ul>
+</li>
+<li>All data will be on a separate partition from the OS (though everything will still be
+  mutable), with <code>/home</code> living on the root partition and making gratuitous use of
+  symlinks. The idea is to make distro-hopping and dual booting super easy.</li>
+<li>It'll ship with the most up-to-date kernel and all the custom tweaks needed to manage
+  power profiles.</li>
+<li>It's going to give the user direct access to the file system and package manager, with
+  all the footguns fully loaded</li>
+<li>... but it will also set up <a href="https://github.com/linuxmint/timeshift">Timeshift</a> for you
+  to help dig out those bullet fragments</li>
+<li>It's almost certainly going to be Arch-based, with flatpak and Steam pre-installed.</li>
+<li>Graphical interactive installer (mainly because I want to learn how to make one)</li>
 </ul>
 <h2 id="is-holoshed-for-me">Is HoloShed for Me?</h2>
 <p>No.</p>
 <h2 id="seriously">Seriously?</h2>
-<p>Yeah, this project is a creative outlet for me and a chance for me to learn more about how Linux
-distributions work. There is an approximately 0% chance that I end up with a system with even half
-the functionality as SteamOS or a third the utility of SteamOS + Rwfus.</p>
+<p>Yeah, this project is a creative outlet for me and a chance for me to learn more about how
+Linux distributions work. There is an approximately 0% chance that I end up with a system
+that I like better than what I have now with SteamOS + Rwfus and sway launchable from
+gaming mode.</p>
 <p>There might be value in looking at my process, but even there I'm guessing the nature of that value will
 be less educational than entertainment at the many ways I mess things up.</p>
 <p>Even if I get everything working, a system with:</p>
 <ul>
-<li>my particular choice of desktop environment (probably <a href="https://elementary.io/">Pantheon</a>)</li>
+<li>my particular choice of desktop environment</li>
 <li>my particular configurations and customizations (<code>alias cat='lolcat'</code>)</li>
 <li>my particular bundled applications and development stacks</li>
 </ul>
@@ -313,6 +365,6 @@ the wheel when it comes to naming.</p>
 </html>
 
 <!--
-MkDocs version : 1.4.2
-Build Date UTC : 2023-01-28 18:49:54.328410+00:00
+MkDocs version : 1.4.3
+Build Date UTC : 2023-05-06 22:11:09.252108+00:00
 -->
