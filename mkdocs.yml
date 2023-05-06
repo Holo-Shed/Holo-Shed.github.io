@@ -1,6 +1,5 @@
 site_name: HoloShed
 site_url: https://github.com/Holo-Shed
-site_favicon: static/favicon.ico
 theme:
   name: cinder
 site_author: Gili "OpenBagTwo" Barlev
