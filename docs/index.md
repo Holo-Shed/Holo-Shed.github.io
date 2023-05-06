@@ -13,7 +13,6 @@ into a coat pocket or use while standing on a crowded train.
 
 I'm told they play games.
 
-
 ## What's wrong with SteamOS?
 
 The Steam Deck is an **omni-console**—it is first and foremost a device for
@@ -34,7 +33,7 @@ total and complete control over the software.
 
 The problem ("problem") is that, as flexible and capable as SteamOS is, and even with
 tools like like [Rwfus](https://github.com/ValShaped/rwfus) around to help get around
-the immutable file system, SteamOS is a _very opinionated_ language, and for people
+the immutable file system, SteamOS is a *very opinionated* language, and for people
 like me who have strong opinions of their own, there are going to be things about
 SteamOS that we find infuriating.
 
@@ -55,18 +54,17 @@ A short list of my grievances:
   be something that feels less natural on the Deck than it does on my phone, which
   at least has picture-in-picture.
 - KDE Plasma is pants. If I had liked the look and feel of Windows XP, I wouldn't have
-  wiped it from my laptop in 2006 favor of Ubuntu (Dapper Drake!) 
-
+  wiped it from my laptop in 2006 favor of Ubuntu (Dapper Drake!)
 
 ## So why not Windows?
 
-Because at this point in my life, I want an operating system that _just works_.
+Because at this point in my life, I want an operating system that *just works*.
 
 No seriously: I cannot understand at this point how people are willing to spend
 hours fighting with Windows Update when it cripples their expensive new processor
 or recover from BSODs when a graphics driver update goes horribly wrong, and yet
 when a tutorial tells them to open a terminal and type a command as transparently
-clear as `package-manager install the-thing` they _nope_ right out.
+clear as `package-manager install the-thing` they *nope* right out.
 
 In all seriousness, I get that people are used to what they're used to, but as
 someone who hasn't used Windows regularly since 2006, there is very little that
@@ -91,7 +89,7 @@ But I guess specifically:
   without pulling up or folding out the keyboard.
 - No separation of desktop mode and gaming mode. One version will definitely be X11-based
   using the Pantheon desktop environment (from [elementaryOS](https://elementary.io)).
-    - I'd also like to make a version with a tiling window manager like
+  - I'd also like to make a version with a tiling window manager like
       i3, [sway](https://swaywm.org/) or [hyprland](https://hyprland.org/), depending on
       which works best for gaming.
 - All data will be on a separate partition from the OS (though everything will still be

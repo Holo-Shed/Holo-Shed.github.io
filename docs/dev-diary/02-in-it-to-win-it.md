@@ -23,9 +23,9 @@ But when I got out my thumb drive and got ready to burn the image... I hesitated
 
 ## Second Thoughts
 
- I couldn't do it. I realized that with all the general-purpose computers in my life, SteamOS offered something nothing else did--the perfect distraction-free omni-console interface, that was so well optimized for playing games that I just couldn't bring myself to potentially mess that up. 
+ I couldn't do it. I realized that with all the general-purpose computers in my life, SteamOS offered something nothing else did--the perfect distraction-free omni-console interface, that was so well optimized for playing games that I just couldn't bring myself to potentially mess that up.
 
- Because I *do* play video games now! I buy way too many video games during Steam sales. I
+ Because I _do_ play video games now! I buy way too many video games during Steam sales. I
  read video game reviews and pre-order titles from my favorite publishers. I spend hours
  tweaking my Steam Input layout... and then I play through the games using it!
 
@@ -36,7 +36,6 @@ And so, with that realization, I made some key decisions:
    without having to log out
 1. Because I still do really want a cyberdeck, I bought a
    [GPD Win 4](https://gpd.hk/gpdwin4)
-
 
 ## They had me at `QWERTY`
 
@@ -70,4 +69,3 @@ might _actually go back_ and make a version for the Steam Deck after all!
 
 But first, I'm going to need to dig into
 [mangohud](https://github.com/flightlessmango/MangoHud) configs...
-
