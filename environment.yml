@@ -8,6 +8,7 @@ dependencies:
   - pre-commit
   - mkdocs
   - mkdocs-literate-nav
+  - pymdown-extensions
   - pip:
     - mkdocs-cinder
     - mkdocs-section-index
