@@ -91,6 +91,12 @@
 </li>
 
                         
+                            
+<li >
+    <a href="../dev-diary/03%20most-important-thing/">A Font of Text Configurations</a>
+</li>
+
+                        
                         </ul>
                     </li>
                 
@@ -134,20 +140,16 @@
 <h2 id="create-your-vm">Create your VM</h2>
 <p>I'm using KVM / QEMU / VirtManager, but you do you.</p>
 <ol>
-<li>
-<p>Set up your virtual machine with Steam Deck specs:</p>
-</li>
-<li>
-<p>64GB of disk space</p>
-</li>
+<li>Set up your virtual machine with Steam Deck specs:</li>
+</ol>
+<ul>
+<li>64GB of disk space</li>
 <li>16GB of RAM</li>
-<li>
-<p>8 CPUs (4 cores, 2 threads per core)</p>
-</li>
-<li>
-<p>For initial setup, I'm using a Virtio display and Spice server. You
-   could also do GPU pass-through.</p>
-</li>
+<li>8 CPUs (4 cores, 2 threads per core)</li>
+</ul>
+<ol>
+<li>For initial setup, I'm using a Virtio display and Spice server. You
+   could also do GPU pass-through.</li>
 <li>Make sure you're using UEFI for boot, not BIOS</li>
 </ol>
 <h2 id="partition-your-disk">Partition your Disk</h2>
@@ -174,13 +176,13 @@ doing it graphically with GParted</p>
 <li>Load it into the VM as a virtual CD</li>
 <li>Make sure it's still the top of the boot order</li>
 <li>Power on and boot</li>
-<li>Follow the Arch install guide</li>
-<li>If you followed the above section, you can skip partitioning &amp; formatting</li>
-<li>Mount the partitions. If you followed the layout of the above section,
+<li>Follow the Arch install guide
+   - If you followed the above section, you can skip partitioning &amp; formatting
+   - Mount the partitions. If you followed the layout of the above section,
      then it should be self-explanatory what to mount where. The <code>main</code> partition
-     should be <code>/main</code></li>
-<li>Install the packages listed in <code>pacstrap.conf</code></li>
-<li>Don't reboot when done</li>
+     should be <code>/main</code>
+   - Install the packages listed in <code>pacstrap.conf</code>
+   - Don't reboot when done</li>
 <li><code>arch-chroot</code> into your system</li>
 <li>useradd your account, adding yourself to wheel</li>
 <li>visudo to add wheel group to sudoers</li>

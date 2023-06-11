@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="The unshackled Steam Deck OS--because the only person shooting you in the foot should be you.">
     <meta name="author" content="Gili "OpenBagTwo" Barlev">
-    <link rel="canonical" href="https://github.com/Holo-Shed/dev-diary/01-to-make-a-linux/">
+    <link rel="canonical" href="https://github.com/Holo-Shed/dev-diary/03%20most-important-thing/">
     <link rel="shortcut icon" href="../../img/favicon.ico">
 
     
-    <title>How to Make a Linux Distribution - HoloShed</title>
+    <title>A Font of Text Configurations - HoloShed</title>
     
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -80,8 +80,8 @@
                         <ul class="dropdown-menu">
                         
                             
-<li class="active">
-    <a href="./">How to Make a Linux Distribution</a>
+<li >
+    <a href="../01-to-make-a-linux/">How to Make a Linux Distribution</a>
 </li>
 
                         
@@ -92,8 +92,8 @@
 
                         
                             
-<li >
-    <a href="../03%20most-important-thing/">A Font of Text Configurations</a>
+<li class="active">
+    <a href="./">A Font of Text Configurations</a>
 </li>
 
                         
@@ -110,17 +110,17 @@
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../">
+                        <a rel="prev" href="../02-in-it-to-win-it/">
                             <i class="fas fa-arrow-left"></i> Previous
                         </a>
                     </li>
-                    <li >
-                        <a rel="next" href="../02-in-it-to-win-it/">
+                    <li class="disabled">
+                        <a rel="next" >
                             Next <i class="fas fa-arrow-right"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://github.com/Holo-Shed/Holo-Shed.github.io/edit/master/docs/dev-diary/01-to-make-a-linux.md"><i class="fab fa-github"></i> Edit on GitHub</a>
+                        <a href="https://github.com/Holo-Shed/Holo-Shed.github.io/edit/master/docs/dev-diary/03 most-important-thing.md"><i class="fab fa-github"></i> Edit on GitHub</a>
                     </li>
             </ul>
         </div>
@@ -132,84 +132,121 @@
         
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="first-level active"><a href="#how-to-make-a-linux-distribution">How to Make a Linux Distribution</a></li>
-            <li class="second-level"><a href="#enter-calamares">Enter Calamares 🐙</a></li>
+        <li class="first-level active"><a href="#a-font-of-text-configurations">A Font of Text Configurations</a></li>
+            <li class="second-level"><a href="#old-man-eyes">Old Man Eyes</a></li>
                 
-                <li class="third-level"><a href="#what-is-calamares">What is Calamares?</a></li>
-                <li class="third-level"><a href="#what-isnt-calamares">What isn't Calamares?</a></li>
-            <li class="second-level"><a href="#building-a-livecd-or-making-a-linux-to-make-your-linux">Building a LiveCD, or, Making a Linux to Make Your Linux</a></li>
+            <li class="second-level"><a href="#the-console">The Console</a></li>
+                
+            <li class="second-level"><a href="#the-most-important-thing">The Most Important Thing</a></li>
                 
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h1 id="how-to-make-a-linux-distribution">How to Make a Linux Distribution</h1>
-<p>I am told that creating one's own Linux distribution is, in some circles,
-a rite of passage akin to
-<a href="https://www.youtube.com/watch?v=SJeBRW1QQMA">building one's own JavaScript framework</a>,
-yet even though I've been using Linux since 2006
-(<em>ah, <a href="https://wiki.ubuntu.com/DapperDrake">Dapper Drake 🦆</a>...</em>),
-it's not something that ever interested me. Even though I had a good understanding of
-the components of a distro (kernel, userspace, desktop environment, package manager...),
-it wasn't until I <a href="https://wiki.archlinux.org/title/installation_guide">installed Arch</a>
-for the first time that I realized <em>just how much</em> was involved in setting up a working
-desktop (that process also made me realize that Arch is just about my limit in terms of
-the lengths I'd go to customize my Linux experience, that is to say: in no way am I
-brave--or patient--enough to try Gentoo!).</p>
-<p>Now technically, once I got my Arch installation configured how I wanted it
-(<a href="https://elementary.io/">Pantheon</a> desktop environment, most apps flatpak
-and configured with the latest AMD Vulkan and OpenCL software stacks)
-I could claim I had successfully built my own Linux distro. To wit--the <em>way</em> I'd
-set up my desktop was through trialing a bunch of setups and configurations in a VM,
-then exporting my package lists and configuration files to install onto a fresh system.
-Similarly, the most straightforward way of declaring victory with this HoloShed project
-would be to do the same:</p>
-<ol>
-<li>Set up a system in a VM, tweak with it and futz with it until I was ready to try it on the Deck</li>
-<li>Export the package lists and configuration files</li>
-<li>Run the Arch installer on the Deck, <code>pacstrap</code> all the packages I had listed, copy over
-   my configuration files</li>
-<li>Validate that everything was working</li>
-<li>Post these steps, configuration files and package lists to reddit.</li>
-<li>Rake in the karma</li>
-</ol>
-<p>But that seemed like a cop-out. <a href="https://chimeraos.org/">ChimeraOS</a>,
-<a href="https://endeavouros.com/">Endeavour</a> and my beloved
-<a href="https://elementary.io/">elementaryOS</a> are more than just blog posts.
-Now, part of that is that <a href="https://github.com/ChimeraOS">each</a>
-<a href="https://github.com/orgs/endeavouros-team/">of those</a>
-<a href="https://github.com/elementary">projects</a>
-has developed their own apps for use on their distro, and (I think) each
-additionally maintain their own package repositories, but the more
-critical difference that makes these projects proper distros is that they
-each have guided installers.</p>
-<h2 id="enter-calamares">Enter Calamares 🐙</h2>
-<p>When Googling "How to make a Linux distribution,"
-<a href="https://calamares.io/">Calamares</a> comes up pretty quick.</p>
-<p>It's the installer framework used by Endeavour, KaOS, Manjaro
-and even non-Arch distros like Lubuntu and Peppermint. While
-there are other installer frameworks out there, Calamares seemed
-like the best place to start.</p>
-<h3 id="what-is-calamares">What is Calamares?</h3>
-<p>Calamares provides a customizable graphical installer that you--the distro
-author--can customize so that a user can run that graphical installer and
-set up their Linux desktop exactly how you--again, the distro author--want it.
-It does this through an extendable collection of modules that a distro author
-can customize to their heart's content.</p>
-<h3 id="what-isnt-calamares">What isn't Calamares?</h3>
-<p>What took me <em>far too long</em> to grok was that Calamares <strong>does not</strong> create the entire
-LiveCD or installation ISO. <strong>It is just the GUI installer itself</strong>, and even after you're
-done configuring it, you <em>still</em> need to create your own installation medium.</p>
-<p>(I mean, you don't <em>really</em>--you could, say, build Calamares as an AppImage, run it from
-<a href="https://github.com/calamares/calamares/wiki/Deploy-AppImage">a full desktop</a>, and install
-your distro to an external drive or, for the Deck explicitly, a microSD, but that's not
-the road I want to go down)</p>
-<h2 id="building-a-livecd-or-making-a-linux-to-make-your-linux">Building a LiveCD, or, Making a Linux to Make Your Linux</h2>
-<p>So I started this project with the intention of building my own Linux distribution.
-What I didn't realize is that I'd be making <em>two</em>. Luckily, there are plenty of tools
-for making bootable ISOs either <a href="https://wiki.archlinux.org/title/archiso">from scratch</a>
-or <a href="https://www.linux-live.org/">from an existing installation</a>, so the only question now
-is whether to start with the chicken or the egg?</p></div>
+<h1 id="a-font-of-text-configurations">A Font of Text Configurations</h1>
+<p>Holo Shed OS for the Win4 is going remarkably well.
+Having a physical keyboard and a
+<a href="https://www.youtube.com/watch?v=Ovp7jrJdLAc">"native"</a>
+landscape display has made the work of developing
+a bespoke Linux distro way easier than it would
+have been on the Steam Deck.</p>
+<h2 id="old-man-eyes">Old Man Eyes</h2>
+<p>Of course, Linuxing on the Win4 does have its downsides
+in the form of a 6" FHD display that makes the text show
+up way too small out of the box, at least for my aging
+eyeballs. X11, GTK/GNOME and Pantheon do all theoretically
+support "HiDPI" modes and scaling, but those Three Stooges get in
+each other's way more often than not. Instead, the most reliable
+solution I've found is grabbing
+<a href="https://wiki.gnome.org/Apps/DconfEditor">Dconf Editor</a> and
+just searching for any setting for "font" or "size." Having
+an interactive tool for this has been ace, by the way, since
+you can preview (and revert) settings extremwely quickly.</p>
+<p>Here's a list of everything I changed (conveniently grabbed
+from the CLI by running <code>dconf dump /</code>:</p>
+<pre class="highlight"><code class="language-ini">[ca/desrt/dconf-editor]
+saved-pathbar-path='/org/gnome/gedit/plugins/externaltools/font'
+window-height=443
+window-width=894
+
+[desktop/ibus/panel]
+custom-font='Sans 14' ; will probably bump this higher
+
+
+[io/elementary/files/file-chooser]
+window-size=(892, 450)
+
+[io/elementary/files/preferences]
+sidebar-width=191
+window-size=(1000, 680)
+
+[io/elementary/terminal/settings]
+font='Monospace 14'
+natural-copy-paste=false
+prefer-dark-style=true
+theme='dark'
+
+[org/gnome/desktop/interface]
+cursor-size=36
+document-font-name='Open Sans 16'
+font-name='Inter 12'
+monospace-font-name='SourceCodeVF 16'
+scaling-factor=uint32 1
+text-scaling-factor=1.0
+
+[org/gnome/desktop/wm/preferences]
+titlebar-font='Cantarell Bold 18'
+
+[org/gnome/font-manager]
+compare-background-color='rgb(255,255,255)'
+compare-foreground-color='rgb(0,0,0)'
+compare-list=@as []
+content-pane-position=187
+google-fonts-background-color='rgb(255,255,255)'
+google-fonts-foreground-color='rgb(0,0,0)'
+language-filter-list=@as []
+selected-category='7:1'
+selected-font='13'
+window-size=(900, 467)
+
+[org/gnome/font-manager/font-viewer]
+preview-font-size=16.0
+
+[org/gnome/gedit/plugins/externaltools]
+font='Monospace 14'
+
+[org/gnome/libgnomekbd/indicator]
+font-size=12</code></pre>
+<p>and thats's the Pantheon desktop sorted!</p>
+<h2 id="the-console">The Console</h2>
+<p>The TTY consoles was a bit trickier, but
+<a href="https://wiki.archlinux.org/title/Linux_console#Fonts">the Arch wiki</a>
+came through, as it so often does, and now
+everything is a reasonable size, even on first boot,
+thanks to an <code>/etc/vconsole.conf</code> of:</p>
+<pre class="highlight"><code class="language-ini">FONT=ter-v28b</code></pre>
+<h2 id="the-most-important-thing">The Most Important Thing</h2>
+<p>But speaking of the terminal, easily my biggest accomplishment so far is
+that I've made a custom <code>neofetch</code> logo for Holo Shed OS:</p>
+<p><img alt="neofetch" src="../../img/neofetch-screenshot.png" /></p>
+<p>Since I'm no ASCII art guru, this was a good-sized project:</p>
+<ul>
+<li>There's a utility called <a href="https://github.com/cslarsen/jp2a"><code>jp2a</code></a>
+  that will convert an image to ASCII art</li>
+<li>But it does it with ANSI codes</li>
+<li>And <code>neofetch</code> (which hasn't been updated since 2021)
+  <a href="https://github.com/dylanaraps/neofetch/issues/1768">doesn't work with ANSI codes</a></li>
+</ul>
+<p>Enter my own solution: <a href="https://github.com/Holo-Shed/neofetch/blob/main/jp2a2neo.py"><code>jp2a2neo.py</code></a>,
+a ridiculously simple script to bridge the gap between the two programs:</p>
+<p>starting with an image like:</p>
+<p><img alt="starting image" src="../../img/jp2a-input.png" /></p>
+<p>and then running the command:</p>
+<pre class="highlight"><code class="language-bash">jp2a logo.png --color-depth=4 --width=48 | ./jp2a2neofetch.py &gt; neofetch_logo.txt</code></pre>
+<p>resulted in an output I could then paste
+<a href="https://github.com/holo-shed/neofetch/commit/cceb174bd1dd4ae9c3139e4ed1beb08d63646a42">directly into the <code>neofetch</code> executable</a>,
+yielding the awesome result you see above.</p>
+<p>So yeah, I'm feeling pretty proud of myself.</p></div>
         
         
     </div>
